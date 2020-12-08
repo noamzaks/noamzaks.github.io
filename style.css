@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    font-family: 'Ubuntu';
+}
+
+.main {
+    margin: 2rem;
+}
+
+.navigation {
+    background-color: #8ea8de;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.navigation a {
+    float: left;
+    transition: 250ms ease-in-out;
+    color: black;
+    text-align: center;
+    padding: 1rem 1.2rem;
+    text-decoration: none;
+}
+
+.navigation a:hover {
+    background-color: #eeeeee;
+    color: black;
+}
+
+.navigation a.active {
+    background-color: #4c3fb0;
+    color: white;
+}
