@@ -3,6 +3,19 @@ body {
     font-family: 'Ubuntu';
 }
 
+li {
+    margin-bottom: 1rem;
+}
+
+a:link {
+    color: #4c3fb0;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #8ea8de;
+}
+
 .main {
     margin: 2rem;
 }
