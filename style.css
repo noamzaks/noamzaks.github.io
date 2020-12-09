@@ -17,7 +17,8 @@ a:visited {
 }
 
 video {
-    width: 100vw;
+    width: 100% !important;
+    height: auto !important;
 }
 
 .main {
