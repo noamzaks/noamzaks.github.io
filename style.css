@@ -16,6 +16,10 @@ a:visited {
     color: #8ea8de;
 }
 
+video {
+    width: 100%;
+}
+
 .main {
     margin: 2rem;
 }
