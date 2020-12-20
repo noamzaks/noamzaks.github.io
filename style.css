@@ -16,7 +16,13 @@ a:visited {
     color: #8ea8de;
 }
 
+a:hover {
+    color: #352e6b;
+}
+
 video {
+    border-radius: 1rem;
+    outline: none;
     width: 100% !important;
     height: auto !important;
 }
@@ -48,4 +54,20 @@ video {
 .navigation a.active {
     background-color: #4c3fb0;
     color: white;
+}
+
+.centered-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.card {
+    background-color: #392e8d;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-right: auto;
+    margin-left: auto;
+    min-width: 40%;
+    max-width: 400px;
+    box-shadow: 0 1rem 2rem 0 #222222;
 }
