@@ -3,10 +3,7 @@ body {
   font-family: "Ubuntu";
 }
 
-li {
-  margin-bottom: 1rem;
-}
-
+/* Colors */
 a:link {
   color: #675daf;
   text-decoration: none;
@@ -20,17 +17,37 @@ a:hover {
   color: #352e6b;
 }
 
+.card * a:hover {
+  color: white;
+}
+/* Rounded */
 video {
   border-radius: 1rem;
   outline: none;
-  width: 100% !important;
+  min-width: 300px;
+  width: 40% !important;
   height: auto !important;
 }
 
+pre {
+  border-radius: 1rem;
+}
+
+/* Spacing */
 .main {
   margin: 2rem;
 }
 
+li {
+  margin-bottom: 1rem;
+}
+
+.centered-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+/* Navigation */
 .navigation {
   background-color: #8ea8de;
   overflow: hidden;
@@ -56,11 +73,6 @@ video {
   color: white;
 }
 
-.centered-list {
-  list-style-type: none;
-  padding-left: 0;
-}
-
 .card {
   background-color: #392e8d;
   padding: 2rem;
@@ -71,14 +83,4 @@ video {
   min-width: 40%;
   max-width: 400px;
   box-shadow: 0 1rem 2rem 0 #222222;
-}
-
-.card * a:hover {
-  color: white;
-}
-
-.small-center {
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
 }
