@@ -1,73 +1,84 @@
 body {
-    margin: 0;
-    font-family: 'Ubuntu';
+  margin: 0;
+  font-family: "Ubuntu";
 }
 
 li {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 a:link {
-    color: #4c3fb0;
-    text-decoration: none;
+  color: #4c3fb0;
+  text-decoration: none;
 }
 
 a:visited {
-    color: #8ea8de;
+  color: #8ea8de;
 }
 
 a:hover {
-    color: #352e6b;
+  color: #352e6b;
 }
 
 video {
-    border-radius: 1rem;
-    outline: none;
-    width: 100% !important;
-    height: auto !important;
+  border-radius: 1rem;
+  outline: none;
+  width: 100% !important;
+  height: auto !important;
 }
 
 .main {
-    margin: 2rem;
+  margin: 2rem;
 }
 
 .navigation {
-    background-color: #8ea8de;
-    overflow: hidden;
-    margin-bottom: 1rem;
+  background-color: #8ea8de;
+  overflow: hidden;
+  margin-bottom: 1rem;
 }
 
 .navigation a {
-    float: left;
-    transition: 250ms ease-in-out;
-    color: black;
-    text-align: center;
-    padding: 1rem 1.2rem;
-    text-decoration: none;
+  float: left;
+  transition: 250ms ease-in-out;
+  color: black;
+  text-align: center;
+  padding: 1rem 1.2rem;
+  text-decoration: none;
 }
 
 .navigation a:hover {
-    background-color: #eeeeee;
-    color: black;
+  background-color: #eeeeee;
+  color: black;
 }
 
 .navigation a.active {
-    background-color: #4c3fb0;
-    color: white;
+  background-color: #4c3fb0;
+  color: white;
 }
 
 .centered-list {
-    list-style-type: none;
-    padding-left: 0;
+  list-style-type: none;
+  padding-left: 0;
 }
 
 .card {
-    background-color: #392e8d;
-    padding: 2rem;
-    border-radius: 1rem;
-    margin-right: auto;
-    margin-left: auto;
-    min-width: 40%;
-    max-width: 400px;
-    box-shadow: 0 1rem 2rem 0 #222222;
+  background-color: #392e8d;
+  padding: 2rem;
+  border-radius: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+  color: white;
+  min-width: 40%;
+  max-width: 400px;
+  box-shadow: 0 1rem 2rem 0 #222222;
+}
+
+.card * a:hover {
+  color: white;
+}
+
+.small-center {
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
 }
