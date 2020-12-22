@@ -22,11 +22,21 @@ a:hover {
 }
 /* Rounded */
 video {
+  display: flex;
   border-radius: 1rem;
   outline: none;
   min-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
   width: 40% !important;
   height: auto !important;
+}
+
+@media screen and (max-width: 300px) {
+  video {
+    min-width: 100%;
+    width: 100% !important;
+  }
 }
 
 pre {
