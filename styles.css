@@ -269,16 +269,9 @@ h1 a {
 }
 
 video {
-    display: flex;
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
     border-radius: 1rem;
     outline: none;
-}
-
-ul {
-    margin-left: 2rem;
 }
 
 .highlight {
@@ -287,10 +280,4 @@ ul {
     border-radius: 1rem;
     padding: 1rem;
     font-family: 'Fira Code';
-}
-
-@media only screen and (max-width: 400px) {
-    video {
-        width: 90%;
-    }
 }
