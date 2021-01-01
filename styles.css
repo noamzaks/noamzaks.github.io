@@ -118,9 +118,6 @@ a {
 .tag {
     display: inline-block;
     background-color: #000;
-    user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
     color: #ddd;
     padding: 4px 6px;
     border-radius: 5px;
@@ -129,6 +126,9 @@ a {
 
 .tag-list a,
 .tag a {
+    user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
     text-decoration: none;
 }
 
