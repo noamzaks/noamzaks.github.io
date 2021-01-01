@@ -129,6 +129,7 @@ a {
     user-select: none;
     -khtml-user-select: none;
     -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
     text-decoration: none;
 }
 
