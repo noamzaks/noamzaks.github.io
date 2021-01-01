@@ -152,6 +152,10 @@ footer {
     color: #8a8a8a;
 }
 
+.muted {
+    color: #555;
+}
+
 @media (prefers-color-scheme: dark) {
     body {
         background-color: #222;
@@ -176,6 +180,10 @@ footer {
 
     header {
         background-color: #000;
+    }
+    
+    .muted {
+        color: #aaa;
     }
 }
 
