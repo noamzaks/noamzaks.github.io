@@ -4,7 +4,7 @@
 *  MIT license, see LICENSE file for details
 */
 
-@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Fira+Code');
 
 * {
@@ -16,7 +16,7 @@
 body {
     background: #fff;
     color: #000;
-    font-family: 'Ubuntu';
+    font-family: -apple-system, BlinkMacSystemFont, 'Roboto';
     text-align: center;
 }
 
@@ -43,7 +43,7 @@ header a {
 }
 
 header .site-name {
-    font-size: 1.5em;
+    font-size: 2.5em;
     color: #000;
     font-weight: bold;
 }
@@ -58,8 +58,14 @@ nav li {
     line-height: 1.5em;
 }
 
+nav li a {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: #aae1f3;
+}
+
 nav li a.selected {
-    text-decoration: underline;
+    background-color: #2070aa;
 }
 
 h1 {
@@ -154,6 +160,14 @@ footer {
     body,
     header .site-name {
         color: #ddd;
+    }
+    
+    nav li a {
+        background-color: #3282e4;
+    }
+    
+    nav li a.selected {
+        background-color: #7067c2;
     }
 
     .item-list > li {
@@ -268,10 +282,16 @@ h1 a {
     text-decoration: none;
 }
 
+h3 {
+    margin-bottom: 0.5rem;
+}
+
 video {
     width: 100%;
     border-radius: 1rem;
     outline: none;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .highlight {
@@ -280,4 +300,23 @@ video {
     border-radius: 1rem;
     padding: 1rem;
     font-family: 'Fira Code';
+}
+
+.small-center-video {
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    width: 70%;
+}
+
+@media(max-width: 600px) {
+    .small-center-video {
+        width: 85%;
+    }
+}
+
+@media(max-width: 400px) {
+    .small-center-video {
+        width: 100%;
+    }
 }
