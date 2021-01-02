@@ -314,6 +314,7 @@ video {
     outline: none;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    object-fit: cover;
 }
 
 .highlight {
