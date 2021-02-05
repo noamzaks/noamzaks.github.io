@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>graph-theory on Noam Zaks</title>
+    <link>http://noamzaks.tech/tags/graph-theory/</link>
+    <description>Recent content in graph-theory on Noam Zaks</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 01 Jan 2021 16:00:28 +0200</lastBuildDate><atom:link href="http://noamzaks.tech/tags/graph-theory/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Matrix Reordering</title>
+      <link>http://noamzaks.tech/puzzles/matrix-reordering/</link>
+      <pubDate>Fri, 01 Jan 2021 16:00:28 +0200</pubDate>
+      
+      <guid>http://noamzaks.tech/puzzles/matrix-reordering/</guid>
+      <description>Given a matrix of size $ m \times n $ which contains numbers from $ 1 $ to $ n $ and each number appears exactly $ m $ times, show that one can reorder the numbers inside each column such that the resulting matrix would have the numbers $ 1 $ to $ n $ in every line.
+First, a (few) quick demo(s) to understand:   
+These demos all share a single codebase which creates an animation given the input.</description>
+    </item>
+    
+  </channel>
+</rss>

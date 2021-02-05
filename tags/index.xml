@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Noam Zaks</title>
+    <link>http://noamzaks.tech/tags/</link>
+    <description>Recent content in Tags on Noam Zaks</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 01 Jan 2021 16:00:28 +0200</lastBuildDate><atom:link href="http://noamzaks.tech/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>graph-theory</title>
+      <link>http://noamzaks.tech/tags/graph-theory/</link>
+      <pubDate>Fri, 01 Jan 2021 16:00:28 +0200</pubDate>
+      
+      <guid>http://noamzaks.tech/tags/graph-theory/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>coloring</title>
+      <link>http://noamzaks.tech/tags/coloring/</link>
+      <pubDate>Mon, 28 Dec 2020 11:09:28 +0200</pubDate>
+      
+      <guid>http://noamzaks.tech/tags/coloring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>infinity</title>
+      <link>http://noamzaks.tech/tags/infinity/</link>
+      <pubDate>Mon, 28 Dec 2020 11:09:28 +0200</pubDate>
+      
+      <guid>http://noamzaks.tech/tags/infinity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>parity</title>
+      <link>http://noamzaks.tech/tags/parity/</link>
+      <pubDate>Mon, 28 Dec 2020 11:09:28 +0200</pubDate>
+      
+      <guid>http://noamzaks.tech/tags/parity/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

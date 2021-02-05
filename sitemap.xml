@@ -1,1 +1,59 @@
-<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"><url><loc>https://noamzaks.tech/coding</loc><changefreq>daily</changefreq><priority>1.0</priority><lastmod>2021-01-01</lastmod></url><url><loc>https://noamzaks.tech/puzzles</loc><changefreq>daily</changefreq><priority>1.0</priority><lastmod>2021-01-01</lastmod></url><url><loc>https://noamzaks.tech/puzzles/matrix-reordering</loc><changefreq>monthly</changefreq><priority>0.5</priority><lastmod>2021-01-02</lastmod></url><url><loc>https://noamzaks.tech/puzzles/square-covering-parity-variations</loc><changefreq>monthly</changefreq><priority>0.5</priority><lastmod>2021-01-02</lastmod></url><url><loc>https://noamzaks.tech/puzzles/square-covering-parity</loc><changefreq>monthly</changefreq><priority>0.5</priority><lastmod>2021-01-02</lastmod></url></urlset>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://noamzaks.tech/tags/graph-theory/</loc>
+    <lastmod>2021-01-01T16:00:28+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://noamzaks.tech/puzzles/matrix-reordering/</loc>
+    <lastmod>2021-01-01T16:00:28+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://noamzaks.tech/</loc>
+    <lastmod>2021-01-01T16:00:28+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://noamzaks.tech/puzzles/</loc>
+    <lastmod>2021-01-01T16:00:28+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://noamzaks.tech/tags/</loc>
+    <lastmod>2021-01-01T16:00:28+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://noamzaks.tech/tags/coloring/</loc>
+    <lastmod>2020-12-28T11:09:28+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://noamzaks.tech/tags/infinity/</loc>
+    <lastmod>2020-12-28T11:09:28+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://noamzaks.tech/tags/parity/</loc>
+    <lastmod>2020-12-28T11:09:28+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://noamzaks.tech/puzzles/square-covering/</loc>
+    <lastmod>2020-12-28T11:09:28+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://noamzaks.tech/puzzles/square-covering-variations/</loc>
+    <lastmod>2020-12-28T11:09:28+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://noamzaks.tech/categories/</loc>
+  </url>
+  
+</urlset>
