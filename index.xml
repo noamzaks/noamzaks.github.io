@@ -6,7 +6,16 @@
     <description>Recent content on Noam Zaks</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 04 Feb 2021 00:20:28 +0200</lastBuildDate><atom:link href="http://noamzaks.tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 08 Feb 2021 16:52:57 +0200</lastBuildDate><atom:link href="http://noamzaks.tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ants Meeting</title>
+      <link>http://noamzaks.tech/puzzles/ants-meeting/</link>
+      <pubDate>Mon, 08 Feb 2021 16:52:57 +0200</pubDate>
+      
+      <guid>http://noamzaks.tech/puzzles/ants-meeting/</guid>
+      <description>Assume you have $ n $ ants located at some points $ x_n $ along the number line. At each step, two of the $ n $ ants are chosen to meet each other and they both travel to the middle between them, e.g. $ x_1, x_2 \longrightarrow \frac{x_1 + x_2}{2}, \frac{x_1 + x_2}{2} $. You may even take $ \infty $ steps. What is the maximum total distance which can be achieved?</description>
+    </item>
+    
     <item>
       <title>Stacking Game</title>
       <link>http://noamzaks.tech/puzzles/stacking-game/</link>

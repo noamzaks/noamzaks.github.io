@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+
+<script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [
+                ["$", "$"],
+                ["\$", "\$"],
+            ],
+            displayMath: [
+                ["$$", "$$"],
+                ["\\[", "\\]"],
+            ],
+        },
+    };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.1.2/es5/tex-mml-chtml.min.js"
+    integrity="sha512-7rZgZU/u5XjLaO7dBpkcvZ2+ilGXbdIak0FXUgMoO+adNy7RUceort055Wn7LkZY3VLwEsSDpi8Ui+32N1vrfw=="
+    crossorigin="anonymous"></script>
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="/styles.css">
+<meta property="og:image" itemprop="image" content="http://noamzaks.tech/icon.png">
+<meta property="og:type" content="website">
+    <title>Noam Zaks | Ants Meeting</title>
+    <meta name="description" content="">
+
+    </head>
+    <body><div id="content" class="container mx-auto">
+    <article class="bg-gray-200 rounded-xl mt-3 p-4 shadow-xl">
+        <div class="text-center">
+            <h1 class="text-3xl">
+                Ants Meeting
+            </h1>
+            <h1 class="text-lg text-gray-500">February 8, 2021</h1>
+            <div id="tags" class="mt-2">
+                
+            </div>
+        </div>
+        <p>Assume you have $ n $ ants located at some points $ x_n $ along the number line.
+At each step, two of the $ n $ ants are chosen to meet each other and they both travel to the middle between them, e.g. $ x_1, x_2 \longrightarrow \frac{x_1 + x_2}{2}, \frac{x_1 + x_2}{2} $. You may even take $ \infty $ steps. What is the maximum total distance which can be achieved?</p>
+<p>Here&rsquo;s an example (I&rsquo;m sticking to points instead of ants) where the ants are in <code>[-6, 0, 4]</code> and the meetings are as such <code>[(0, 2), (0, 1), (1, 2), (0, 1), (1, 2), (0, 1), (0, 2), (1, 2), (0, 2), (0, 1)]</code> where 0, 1, 2 are the three ants.</p>
+<video controls src="/videos/ants-meeting/Example1.mp4" class="rounded-xl my-3 outline-none"></video>
+<p>The total distance is around 12 which is suspiciously integer. If, however, the same ants meet in a more &lsquo;strategic&rsquo; matter discussed later, here&rsquo;s another possibility.</p>
+<video controls src="/videos/ants-meeting/Example2.mp4" class="rounded-xl my-3 outline-none"></video>
+<p>The meetings are <code>[(1, 2), (0, 2), (0, 1), (1, 2), (0, 1), (1, 2), (0, 1), (1, 2), (0, 1), (1, 2), (0, 1), (1, 2)]</code>. Can you guess what the optimal meeting strategy is?</p>
+<p>As always,</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> manim <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Example</span>(Scene):
+    initial_points <span style="color:#f92672">=</span> [<span style="color:#f92672">-</span><span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">4</span>]
+    meetings <span style="color:#f92672">=</span> [(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>), (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>), (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>), (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>), (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>), (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>), (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>)]
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">construct</span>(self):
+        distance <span style="color:#f92672">=</span> Tex(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;Total Distance: \ &#34;</span>, <span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;$ 0.00 $&#34;</span>)<span style="color:#f92672">.</span>to_edge(UP)
+        total_distance <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+
+        ants <span style="color:#f92672">=</span> [] <span style="color:#75715e"># This is symbolic. They are dots.</span>
+        <span style="color:#66d9ef">for</span> point <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>initial_points:
+            ants<span style="color:#f92672">.</span>append(SmallDot()<span style="color:#f92672">.</span>move_to(RIGHT <span style="color:#f92672">*</span> point))
+
+        self<span style="color:#f92672">.</span>play(<span style="color:#f92672">*</span>[ShowCreation(ant) <span style="color:#66d9ef">for</span> ant <span style="color:#f92672">in</span> ants], Write(distance))
+
+        <span style="color:#66d9ef">for</span> meeting <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>meetings:
+            a,b <span style="color:#f92672">=</span> ants[meeting[<span style="color:#ae81ff">0</span>]], ants[meeting[<span style="color:#ae81ff">1</span>]]
+            middle <span style="color:#f92672">=</span> (a<span style="color:#f92672">.</span>get_center() <span style="color:#f92672">+</span> b<span style="color:#f92672">.</span>get_center()) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> RIGHT <span style="color:#75715e"># Normalize upward direction</span>
+            total_distance <span style="color:#f92672">+=</span> abs(a<span style="color:#f92672">.</span>get_center()[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">-</span> b<span style="color:#f92672">.</span>get_center()[<span style="color:#ae81ff">0</span>])
+            self<span style="color:#f92672">.</span>play(
+                a<span style="color:#f92672">.</span>animate<span style="color:#f92672">.</span>move_to(middle <span style="color:#f92672">+</span> UP <span style="color:#f92672">/</span> <span style="color:#ae81ff">3</span>),
+                b<span style="color:#f92672">.</span>animate<span style="color:#f92672">.</span>move_to(middle),
+                Transform(
+                    distance[<span style="color:#ae81ff">1</span>],
+                    Tex(f<span style="color:#e6db74">&#34;$ {total_distance :.2f} $&#34;</span>)<span style="color:#f92672">.</span>move_to(distance[<span style="color:#ae81ff">1</span>])
+                )
+            )
+</code></pre></div><h2 id="solution">Solution</h2>
+<p>Coming later</p>
+
+
+        <div id="categories" class="text-center">
+            <a class="inline-block px-2 py-1 rounded-full mx-1 text-gray-700 hover:scale-110 transition duration-200 transform" href="/puzzles/">View all puzzles</a>
+            
+        </div>
+    </article>
+
+        </div></body>
+</html>

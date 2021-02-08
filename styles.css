@@ -590,6 +590,10 @@ h3 {
   border-radius: 9999px;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .block {
   display: block;
 }
@@ -847,6 +851,11 @@ pre {
   max-width: 100%;
   overflow-x: auto;
   padding: 1rem;
+}
+
+mjx-container {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 @media (min-width: 640px) {

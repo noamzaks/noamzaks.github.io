@@ -3,8 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://noamzaks.tech/puzzles/ants-meeting/</loc>
+    <lastmod>2021-02-08T16:52:57+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://noamzaks.tech/</loc>
+    <lastmod>2021-02-08T16:52:57+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://noamzaks.tech/puzzles/</loc>
-    <lastmod>2021-02-04T00:20:28+02:00</lastmod>
+    <lastmod>2021-02-08T16:52:57+02:00</lastmod>
   </url>
   
   <url>
@@ -14,11 +24,6 @@
   
   <url>
     <loc>http://noamzaks.tech/tags/modulus/</loc>
-    <lastmod>2021-02-04T00:20:28+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://noamzaks.tech/</loc>
     <lastmod>2021-02-04T00:20:28+02:00</lastmod>
   </url>
   
