@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+
+<script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [
+                ["$", "$"],
+                ["\$", "\$"],
+            ],
+            displayMath: [
+                ["$$", "$$"],
+                ["\\[", "\\]"],
+            ],
+        },
+    };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.1.2/es5/tex-mml-chtml.min.js"
+    integrity="sha512-7rZgZU/u5XjLaO7dBpkcvZ2+ilGXbdIak0FXUgMoO+adNy7RUceort055Wn7LkZY3VLwEsSDpi8Ui+32N1vrfw=="
+    crossorigin="anonymous"></script>
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="/styles.css"></head>
+    <body><div id="content" class="container mx-auto">
+    <article class="bg-gray-200 rounded-xl mt-3 p-4 shadow-xl">
+        <div class="text-center">
+            <h1 class="text-3xl">
+                Stacking Game
+            </h1>
+            <h1 class="text-lg text-gray-500">February 4, 2021</h1>
+            <div id="tags" class="mt-2">
+                
+                    <a class="inline-block px-2 py-1 rounded-full mx-1 bg-blue-200 hover:bg-blue-300 hover:scale-110 transition duration-200 transform" href="http://noamzaks.tech/tags/invariance/">Invariance</a>
+                
+                    <a class="inline-block px-2 py-1 rounded-full mx-1 bg-blue-200 hover:bg-blue-300 hover:scale-110 transition duration-200 transform" href="http://noamzaks.tech/tags/modulus/">Modulus</a>
+                
+            </div>
+        </div>
+        <p>You have $ n $ boxes organized in a circle, where each box contains a ball. You are only allowed to move two balls to adjacent boxes in opposite directions (clockwise and counter-clockwise). Given $ n $, determine if you can move all the balls to a single box.</p>
+<h2 id="solution">Solution</h2>
+<p>Let us take a closer look at $ n = 2 $.</p>
+<video controls src="/videos/stacking-game/Two.mp4" class="rounded-xl my-3 outline-none"></video>
+<p>Sadly, we are stuck!
+How about $ n = 3 $?</p>
+<video controls src="/videos/stacking-game/Three.mp4" class="rounded-xl my-3 outline-none"></video>
+<p>Hurray. After you think about it for a bit, you might indeed try to do the same for all odd $n$&rsquo;s, for example:</p>
+<video controls src="/videos/stacking-game/Seven.mp4" class="rounded-xl my-3 outline-none"></video>
+<p>Here&rsquo;s another somewhat pleasing visual for $ n = 13 $:
+<video controls src="/videos/stacking-game/ThirteenFast.mp4" class="rounded-xl my-3 outline-none"></video></p>
+<p>Here&rsquo;s the code</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> typing <span style="color:#f92672">import</span> List
+<span style="color:#f92672">from</span> manim <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Two</span>(Scene):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">construct</span>(self):
+        dots <span style="color:#f92672">=</span> [
+            Dot()<span style="color:#f92672">.</span>shift(RIGHT),
+            Dot()<span style="color:#f92672">.</span>shift(LEFT),
+        ]
+
+        self<span style="color:#f92672">.</span>play(<span style="color:#f92672">*</span>[ShowCreation(dot) <span style="color:#66d9ef">for</span> dot <span style="color:#f92672">in</span> dots])
+
+        self<span style="color:#f92672">.</span>play(
+            ClockwiseTransform(dots[<span style="color:#ae81ff">0</span>], dots[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>copy()),
+            ClockwiseTransform(dots[<span style="color:#ae81ff">1</span>], dots[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>copy()),
+        )
+
+        self<span style="color:#f92672">.</span>wait()
+
+        self<span style="color:#f92672">.</span>play(
+            CounterclockwiseTransform(dots[<span style="color:#ae81ff">0</span>], dots[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>copy()),
+            CounterclockwiseTransform(dots[<span style="color:#ae81ff">1</span>], dots[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>copy()),
+        )
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Odd</span>(Scene):
+    n <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">construct</span>(self):
+        dots_by_angle: dict[float, List[Dot]] <span style="color:#f92672">=</span> {}
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>n):
+            dots_by_angle[i] <span style="color:#f92672">=</span> [Dot()<span style="color:#f92672">.</span>shift(rotate_vector(RIGHT, <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> PI <span style="color:#f92672">*</span> i <span style="color:#f92672">/</span> self<span style="color:#f92672">.</span>n))]
+
+        self<span style="color:#f92672">.</span>play(<span style="color:#f92672">*</span>[ShowCreation(dot[<span style="color:#ae81ff">0</span>]) <span style="color:#66d9ef">for</span> dot <span style="color:#f92672">in</span> dots_by_angle<span style="color:#f92672">.</span>values()])
+
+        middle <span style="color:#f92672">=</span> int((self<span style="color:#f92672">.</span>n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>)
+
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(middle <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>):
+            angle <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> PI <span style="color:#f92672">*</span> i <span style="color:#f92672">/</span> self<span style="color:#f92672">.</span>n
+            new_angle <span style="color:#f92672">=</span> angle <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> PI <span style="color:#f92672">/</span> self<span style="color:#f92672">.</span>n
+            other <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> PI <span style="color:#f92672">-</span> angle <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> PI <span style="color:#f92672">/</span> self<span style="color:#f92672">.</span>n
+            new_other <span style="color:#f92672">=</span> other <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> PI <span style="color:#f92672">/</span> self<span style="color:#f92672">.</span>n
+            animations <span style="color:#f92672">=</span> []
+
+            count <span style="color:#f92672">=</span> len(dots_by_angle[i])
+            <span style="color:#66d9ef">for</span> index, dot <span style="color:#f92672">in</span> enumerate(dots_by_angle[i]):
+                animations<span style="color:#f92672">.</span>append(
+                    CounterclockwiseTransform(
+                        dot,
+                        Dot()<span style="color:#f92672">.</span>move_to(
+                            rotate_vector(
+                                RIGHT <span style="color:#f92672">*</span> ((count <span style="color:#f92672">-</span> index <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>), new_angle
+                            )
+                        ),
+                    )
+                )
+
+            animations_two <span style="color:#f92672">=</span> []
+            count <span style="color:#f92672">=</span> len(dots_by_angle[self<span style="color:#f92672">.</span>n <span style="color:#f92672">-</span> i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>])
+            <span style="color:#66d9ef">for</span> index, dot <span style="color:#f92672">in</span> enumerate(dots_by_angle[self<span style="color:#f92672">.</span>n <span style="color:#f92672">-</span> i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]):
+                animations_two<span style="color:#f92672">.</span>append(
+                    ClockwiseTransform(
+                        dot,
+                        Dot()<span style="color:#f92672">.</span>move_to(
+                            rotate_vector(
+                                RIGHT <span style="color:#f92672">*</span> ((count <span style="color:#f92672">-</span> index <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>), new_other
+                            )
+                        ),
+                    )
+                )
+
+            count <span style="color:#f92672">=</span> len(animations)
+            <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(count):
+                self<span style="color:#f92672">.</span>play(animations[count <span style="color:#f92672">-</span> i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>], animations_two[count <span style="color:#f92672">-</span> i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>])
+
+            dots_by_angle[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">+=</span> dots_by_angle[i][::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+            dots_by_angle[self<span style="color:#f92672">.</span>n <span style="color:#f92672">-</span> i <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>] <span style="color:#f92672">+=</span> dots_by_angle[self<span style="color:#f92672">.</span>n <span style="color:#f92672">-</span> i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>][::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+            dots_by_angle[i] <span style="color:#f92672">=</span> []
+            dots_by_angle[self<span style="color:#f92672">.</span>n <span style="color:#f92672">-</span> i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> []
+
+        animations <span style="color:#f92672">=</span> []
+        animations_two <span style="color:#f92672">=</span> []
+        count <span style="color:#f92672">=</span> len(dots_by_angle[middle <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>])
+        <span style="color:#66d9ef">for</span> index, dot <span style="color:#f92672">in</span> enumerate(dots_by_angle[middle <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]):
+            animations<span style="color:#f92672">.</span>append(
+                CounterclockwiseTransform(
+                    dot,
+                    Dot()<span style="color:#f92672">.</span>move_to(
+                        rotate_vector(
+                            RIGHT <span style="color:#f92672">*</span> ((count <span style="color:#f92672">-</span> index <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>), <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> PI <span style="color:#f92672">*</span> middle <span style="color:#f92672">/</span> self<span style="color:#f92672">.</span>n
+                        )
+                    ),
+                )
+            )
+        <span style="color:#66d9ef">for</span> index, dot <span style="color:#f92672">in</span> enumerate(dots_by_angle[middle <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]):
+            animations_two<span style="color:#f92672">.</span>append(
+                ClockwiseTransform(
+                    dot,
+                    Dot()<span style="color:#f92672">.</span>move_to(
+                        rotate_vector(
+                            RIGHT <span style="color:#f92672">*</span> ((count <span style="color:#f92672">-</span> index <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">4</span>), <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> PI <span style="color:#f92672">*</span> middle <span style="color:#f92672">/</span> self<span style="color:#f92672">.</span>n
+                        )
+                    ),
+                )
+            )
+        count <span style="color:#f92672">=</span> len(animations)
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(count):
+            self<span style="color:#f92672">.</span>play(animations[count<span style="color:#f92672">-</span>i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>], animations_two[count<span style="color:#f92672">-</span>i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])
+        self<span style="color:#f92672">.</span>wait()
+
+        animations <span style="color:#f92672">=</span> []
+        <span style="color:#66d9ef">for</span> dots <span style="color:#f92672">in</span> dots_by_angle<span style="color:#f92672">.</span>values():
+            <span style="color:#66d9ef">for</span> dot <span style="color:#f92672">in</span> dots:
+                animations<span style="color:#f92672">.</span>append(
+                    dot<span style="color:#f92672">.</span>animate<span style="color:#f92672">.</span>shift(
+                        rotate_vector(
+                            <span style="color:#ae81ff">4</span> <span style="color:#f92672">*</span> RIGHT <span style="color:#f92672">*</span> ((middle <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>), <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> PI <span style="color:#f92672">*</span> middle <span style="color:#f92672">/</span> self<span style="color:#f92672">.</span>n
+                        )
+                    )
+                )
+        self<span style="color:#f92672">.</span>play(<span style="color:#f92672">*</span>animations)
+</code></pre></div>
+
+        <div id="categories" class="text-center">
+            <a class="inline-block px-2 py-1 rounded-full mx-1 text-gray-700 hover:scale-110 transition duration-200 transform" href="/puzzles/">View all puzzles</a>
+            
+        </div>
+    </article>
+
+        </div></body>
+</html>
