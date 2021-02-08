@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Puzzles on Noam Zaks</title>
+    <title>Noam Zaks</title>
     <link>http://noamzaks.tech/puzzles/</link>
-    <description>Recent content in Puzzles on Noam Zaks</description>
+    <description>Recent content on Noam Zaks</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 04 Feb 2021 00:20:28 +0200</lastBuildDate><atom:link href="http://noamzaks.tech/puzzles/index.xml" rel="self" type="application/rss+xml" />
