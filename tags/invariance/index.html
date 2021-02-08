@@ -28,23 +28,42 @@
     <meta name="description" content="">
 
     </head>
-    <body><div id="content" class="container mx-auto">
+    <body><nav>
+    <div class="w-full bg-blue-200 py-3 mb-2">
+        <h1 class="text-center"><a href="/">Noam Zaks</a></h1>
+        <div id="categories" class="text-center mt-2">
+            <a class="inline-block px-2 py-1 rounded-xl mx-1 bg-blue-400 hover:bg-blue-600 hover:text-white hover:scale-125 transition duration-200 transform" href="/puzzles">Puzzles</a>
+        </div>
+    </div>
+</nav><div id="content" class="container mx-auto">
     
         <h1 class="text-4xl text-center my-3">Tagged with <span class="text-blue-500">invariance</span></h1>
     
     
-    
+    <div class="text-center">
+        
+    </div>
 
     
-            <article class="text-center my-10">
-                <div class="cursor-pointer inline-block p-4 bg-gray-200 rounded-xl mx-auto shadow-lg transition duration-500 transform hover:scale-105 hover:shadow-2xl" onclick="location.href = 'http:\/\/noamzaks.tech\/puzzles\/stacking-game\/'">
-                    <h1 class="text-3xl text-blue-500">Stacking Game</h1>
-                    <h3 class="text-xl text-center mb-3 text-gray-500">February 4, 2021</h3>
-                    <p>
-                        You have $ n $ boxes organized in a circle, where each box contains a ball. You are only allowed to move two balls to adjacent boxes in opposite directions (clockwise and counter-clockwise). Given $ n $, determine if you can move all the balls to a single box.
-                    </p>
-                </div>
-            </article>
+        <article class="text-center my-10">
+            <div class="cursor-pointer inline-block p-4 bg-gray-200 rounded-xl mx-auto shadow-lg transition duration-500 transform hover:scale-105 hover:shadow-2xl" onclick="location.href = 'http:\/\/noamzaks.tech\/puzzles\/ant-meeting\/'">
+                <h1 class="text-3xl text-blue-500">Ant Meeting</h1>
+                <h3 class="text-xl text-center mb-3 text-gray-500">February 8, 2021</h3>
+                <p>
+                    Assume you have $ n $ ants located at some points $ x_n $ along the number line. At each step, two of the $ n $ ants are chosen to meet each other and they both travel to the middle between them, e.g. $ x_1, x_2 \longrightarrow \frac{x_1 + x_2}{2}, \frac{x_1 + x_2}{2} $. You may even take $ \infty $ steps. What is the maximum total distance which can be achieved?
+                </p>
+            </div>
+        </article>
+    
+        <article class="text-center my-10">
+            <div class="cursor-pointer inline-block p-4 bg-gray-200 rounded-xl mx-auto shadow-lg transition duration-500 transform hover:scale-105 hover:shadow-2xl" onclick="location.href = 'http:\/\/noamzaks.tech\/puzzles\/stacking-game\/'">
+                <h1 class="text-3xl text-blue-500">Stacking Game</h1>
+                <h3 class="text-xl text-center mb-3 text-gray-500">February 4, 2021</h3>
+                <p>
+                    You have $ n $ boxes organized in a circle, where each box contains a ball. You are only allowed to move two balls to adjacent boxes in opposite directions (clockwise and counter-clockwise). Given $ n $, determine if you can move all the balls to a single box.
+                </p>
+            </div>
+        </article>
     
 
         </div></body>

@@ -577,9 +577,19 @@ h3 {
   background-color: rgba(191, 219, 254, var(--tw-bg-opacity));
 }
 
+.bg-blue-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(96, 165, 250, var(--tw-bg-opacity));
+}
+
 .hover\:bg-blue-300:hover {
   --tw-bg-opacity: 1;
   background-color: rgba(147, 197, 253, var(--tw-bg-opacity));
+}
+
+.hover\:bg-blue-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(37, 99, 235, var(--tw-bg-opacity));
 }
 
 .rounded-xl {
@@ -626,11 +636,6 @@ h3 {
   line-height: 2.5rem;
 }
 
-.text-5xl {
-  font-size: 3rem;
-  line-height: 1;
-}
-
 .mx-1 {
   margin-left: 0.25rem;
   margin-right: 0.25rem;
@@ -655,16 +660,12 @@ h3 {
   margin-top: 0.5rem;
 }
 
-.mt-3 {
-  margin-top: 0.75rem;
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 
 .mb-3 {
   margin-bottom: 0.75rem;
-}
-
-.mt-4 {
-  margin-top: 1rem;
 }
 
 .outline-none {
@@ -684,6 +685,11 @@ h3 {
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 * {
@@ -738,9 +744,13 @@ h3 {
   color: rgba(37, 99, 235, var(--tw-text-opacity));
 }
 
-.text-blue-700 {
+.hover\:text-white:hover {
   --tw-text-opacity: 1;
-  color: rgba(29, 78, 216, var(--tw-text-opacity));
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
+.w-full {
+  width: 100%;
 }
 
 .transform {
@@ -762,6 +772,11 @@ h3 {
 .hover\:scale-110:hover {
   --tw-scale-x: 1.1;
   --tw-scale-y: 1.1;
+}
+
+.hover\:scale-125:hover {
+  --tw-scale-x: 1.25;
+  --tw-scale-y: 1.25;
 }
 
 .transition {

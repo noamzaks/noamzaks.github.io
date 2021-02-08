@@ -28,8 +28,15 @@
     <meta name="description" content="An odd number of m by n rectangles is placed on an infinite grid, such that any two may overlap. Show that there are at least mn small 1 by 1 grid squares that are covered by an odd number of rectangles.">
 
     </head>
-    <body><div id="content" class="container mx-auto">
-    <article class="bg-gray-200 rounded-xl mt-3 p-4 shadow-xl">
+    <body><nav>
+    <div class="w-full bg-blue-200 py-3 mb-2">
+        <h1 class="text-center"><a href="/">Noam Zaks</a></h1>
+        <div id="categories" class="text-center mt-2">
+            <a class="inline-block px-2 py-1 rounded-xl mx-1 bg-blue-400 hover:bg-blue-600 hover:text-white hover:scale-125 transition duration-200 transform" href="/puzzles">Puzzles</a>
+        </div>
+    </div>
+</nav><div id="content" class="container mx-auto">
+    <article class="bg-gray-200 rounded-xl my-3 p-4 shadow-xl">
         <div class="text-center">
             <h1 class="text-3xl">
                 Square Covering Variations
@@ -54,7 +61,7 @@ The riddle can be easily described for rectangles:</p>
 Show that there are at least $ m \times n $ small $ 1 \times 1 $ grid squares that are covered by an odd number of squares.</p>
 <p>Here&rsquo;s an animation of an example, alongside the code:</p>
 <video controls src="/videos/square-covering-variations/RectangleExample.mp4" class="rounded-xl my-3 outline-none"></video>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> manimlib.imports <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> manim <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Example</span>(Scene):
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">construct</span>(self):
@@ -114,7 +121,7 @@ Show that the area of the points which are covered by an odd number of rectangle
 <p>As it turns out, we can solve this riddle without thoroughly understanding the definition of an area (for example, the area of $ \mathbb Q ^ 2 $ - the rational points, is 0).
 Here&rsquo;s a fun animation (got you surprised this time, didn&rsquo;t I?) to demonstrate:</p>
 <video controls src="/videos/square-covering-variations/RExample.mp4" class="rounded-xl my-3 outline-none"></video>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> manimlib.imports <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> manim <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Example</span>(Scene):
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">construct</span>(self):

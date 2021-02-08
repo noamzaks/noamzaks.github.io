@@ -8,11 +8,11 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 08 Feb 2021 16:52:57 +0200</lastBuildDate><atom:link href="http://noamzaks.tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Ants Meeting</title>
-      <link>http://noamzaks.tech/puzzles/ants-meeting/</link>
+      <title>Ant Meeting</title>
+      <link>http://noamzaks.tech/puzzles/ant-meeting/</link>
       <pubDate>Mon, 08 Feb 2021 16:52:57 +0200</pubDate>
       
-      <guid>http://noamzaks.tech/puzzles/ants-meeting/</guid>
+      <guid>http://noamzaks.tech/puzzles/ant-meeting/</guid>
       <description>Assume you have $ n $ ants located at some points $ x_n $ along the number line. At each step, two of the $ n $ ants are chosen to meet each other and they both travel to the middle between them, e.g. $ x_1, x_2 \longrightarrow \frac{x_1 + x_2}{2}, \frac{x_1 + x_2}{2} $. You may even take $ \infty $ steps. What is the maximum total distance which can be achieved?</description>
     </item>
     
@@ -44,10 +44,9 @@ These demos all share a single codebase which creates an animation given the inp
       <pubDate>Mon, 28 Dec 2020 11:09:28 +0200</pubDate>
       
       <guid>http://noamzaks.tech/puzzles/square-covering/</guid>
-      <description>An odd number of $ n \times n $ squares is placed on an infinite grid, such that any two may overlap. Show that there are at least $ n^2 $ small $ 1 \times 1 $ grid squares that are covered by an odd number of squares.
+      <description>An odd number of $ n \times n $ squares is placed on the integer points of an infinite grid, such that any two may overlap. Show that there are at least $ n^2 $ small $ 1 \times 1 $ grid squares that are covered by an odd number of squares.
 First, let&amp;rsquo;s create an animations showing this for $ n = 3 $: 
-The code looks like so:
-from manimlib.imports import * class Example(Scene): def construct(self): # Create 3x3 squares one = Square(fill_opacity=0.</description>
+The code looks like so:</description>
     </item>
     
     <item>
