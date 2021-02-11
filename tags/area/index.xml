@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>area on Noam Zaks</title>
+    <link>http://noamzaks.tech/tags/area/</link>
+    <description>Recent content in area on Noam Zaks</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 11 Feb 2021 16:24:22 +0200</lastBuildDate><atom:link href="http://noamzaks.tech/tags/area/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Triangle Areas</title>
+      <link>http://noamzaks.tech/puzzles/triangle-areas/</link>
+      <pubDate>Thu, 11 Feb 2021 16:24:22 +0200</pubDate>
+      
+      <guid>http://noamzaks.tech/puzzles/triangle-areas/</guid>
+      <description>Given a group $ S $ of points $ (x,y) \in \mathbb R ^ 2 $ such that every three points in $ S $ form a triangle (aren&amp;rsquo;t collinear) of area at most $ 1 $, show that there is some triangle with area at most 2 which bounds $ S $.
+Solution The idea is to look at the three points which make the triangle with the largest area, and note the following observation:</description>
+    </item>
+    
+  </channel>
+</rss>

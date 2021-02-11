@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+
+<script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [
+                ["$", "$"],
+                ["\$", "\$"],
+            ],
+            displayMath: [
+                ["$$", "$$"],
+                ["\\[", "\\]"],
+            ],
+        },
+    };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.1.2/es5/tex-mml-chtml.min.js"
+    integrity="sha512-7rZgZU/u5XjLaO7dBpkcvZ2+ilGXbdIak0FXUgMoO+adNy7RUceort055Wn7LkZY3VLwEsSDpi8Ui+32N1vrfw=="
+    crossorigin="anonymous"></script>
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="/styles.css">
+<meta property="og:image" itemprop="image" content="http://noamzaks.tech/icon.png">
+<meta property="og:type" content="website">
+    <title>Noam Zaks | Grasshopping</title>
+    <meta name="description" content="">
+
+    </head>
+    <body><nav>
+    <div class="w-full bg-blue-200 py-3 mb-2">
+        <h1 class="text-center"><a href="/">Noam Zaks</a></h1>
+        <div id="categories" class="text-center mt-2">
+            <a class="inline-block px-2 py-1 rounded-xl mx-1 bg-blue-400 hover:bg-blue-600 hover:text-white hover:scale-125 transition duration-200 transform" href="/puzzles">Puzzles</a>
+        </div>
+    </div>
+</nav><div id="content" class="container mx-auto">
+    <article class="bg-gray-200 rounded-xl my-3 p-4 shadow-xl">
+        <div class="text-center">
+            <h1 class="text-3xl">
+                Grasshopping
+            </h1>
+            <h1 class="text-lg text-gray-500">February 9, 2021</h1>
+            <div id="tags" class="mt-2">
+                
+            </div>
+        </div>
+        <p>A grasshopper sits in a point $ M \in \mathbb R ^ 2 $, outside of the square $ [0, 1] ^ 2 $. Each time, they face towards the origin and choose the rightmost corner of the square they are able to see (from their perspective). Then they go to the symmetric point with regard to it.</p>
+<p>That&rsquo;s quite a difficult explanation of their moves, so here&rsquo;s one without words - an example of the first 50 hops when the grasshopper starts at $ (3, 2) $:</p>
+<video controls src="/videos/grasshopping/RotatingExample.mp4" class="rounded-xl my-3 outline-none"></video>
+<p>If you like skating more than rotating you may prefer the following animation</p>
+<video controls src="/videos/grasshopping/SlidingExample.mp4" class="rounded-xl my-3 outline-none"></video>
+<p>Here&rsquo;s the same grasshopper playing faster over 150 hops:</p>
+<video controls src="/videos/grasshopping/FastExample.mp4" class="rounded-xl my-3 outline-none"></video>
+<p>You can create your own grasshopper animation with the following code, by customizing the <code>hops</code> variable and <code>time</code> variable (less time is faster and more hops is longer)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+</code></pre></div><h2 id="solution">Solution</h2>
+<p>The solution is actually quite tricky, so it isn&rsquo;t available yet.</p>
+
+
+        <div id="categories" class="text-center">
+            <a class="inline-block px-2 py-1 rounded-full mx-1 text-gray-700 hover:scale-110 transition duration-200 transform" href="/puzzles/">View all puzzles</a>
+            
+        </div>
+    </article>
+
+        </div></body>
+</html>

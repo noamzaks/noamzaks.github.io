@@ -6,7 +6,27 @@
     <description>Recent content in Puzzles on Noam Zaks</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Feb 2021 16:52:57 +0200</lastBuildDate><atom:link href="http://noamzaks.tech/puzzles/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Feb 2021 16:24:22 +0200</lastBuildDate><atom:link href="http://noamzaks.tech/puzzles/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Triangle Areas</title>
+      <link>http://noamzaks.tech/puzzles/triangle-areas/</link>
+      <pubDate>Thu, 11 Feb 2021 16:24:22 +0200</pubDate>
+      
+      <guid>http://noamzaks.tech/puzzles/triangle-areas/</guid>
+      <description>Given a group $ S $ of points $ (x,y) \in \mathbb R ^ 2 $ such that every three points in $ S $ form a triangle (aren&amp;rsquo;t collinear) of area at most $ 1 $, show that there is some triangle with area at most 2 which bounds $ S $.
+Solution The idea is to look at the three points which make the triangle with the largest area, and note the following observation:</description>
+    </item>
+    
+    <item>
+      <title>Grasshopping</title>
+      <link>http://noamzaks.tech/puzzles/grasshopping/</link>
+      <pubDate>Tue, 09 Feb 2021 13:27:04 +0200</pubDate>
+      
+      <guid>http://noamzaks.tech/puzzles/grasshopping/</guid>
+      <description>A grasshopper sits in a point $ M \in \mathbb R ^ 2 $, outside of the square $ [0, 1] ^ 2 $. Each time, they face towards the origin and choose the rightmost corner of the square they are able to see (from their perspective). Then they go to the symmetric point with regard to it.
+That&amp;rsquo;s quite a difficult explanation of their moves, so here&amp;rsquo;s one without words - an example of the first 50 hops when the grasshopper starts at $ (3, 2) $:</description>
+    </item>
+    
     <item>
       <title>Ant Meeting</title>
       <link>http://noamzaks.tech/puzzles/ant-meeting/</link>

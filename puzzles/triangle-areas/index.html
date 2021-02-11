@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+
+<script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [
+                ["$", "$"],
+                ["\$", "\$"],
+            ],
+            displayMath: [
+                ["$$", "$$"],
+                ["\\[", "\\]"],
+            ],
+        },
+    };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.1.2/es5/tex-mml-chtml.min.js"
+    integrity="sha512-7rZgZU/u5XjLaO7dBpkcvZ2+ilGXbdIak0FXUgMoO+adNy7RUceort055Wn7LkZY3VLwEsSDpi8Ui+32N1vrfw=="
+    crossorigin="anonymous"></script>
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="/styles.css">
+<meta property="og:image" itemprop="image" content="http://noamzaks.tech/icon.png">
+<meta property="og:type" content="website">
+    <title>Noam Zaks | Triangle Areas</title>
+    <meta name="description" content="Given a group S of points (x,y) in the plane such that every three points in S form a triangle (aren&#39;t collinear) of area at most 1, show that there is some triangle with area at most 2 which bounds S.">
+
+    </head>
+    <body><nav>
+    <div class="w-full bg-blue-200 py-3 mb-2">
+        <h1 class="text-center"><a href="/">Noam Zaks</a></h1>
+        <div id="categories" class="text-center mt-2">
+            <a class="inline-block px-2 py-1 rounded-xl mx-1 bg-blue-400 hover:bg-blue-600 hover:text-white hover:scale-125 transition duration-200 transform" href="/puzzles">Puzzles</a>
+        </div>
+    </div>
+</nav><div id="content" class="container mx-auto">
+    <article class="bg-gray-200 rounded-xl my-3 p-4 shadow-xl">
+        <div class="text-center">
+            <h1 class="text-3xl">
+                Triangle Areas
+            </h1>
+            <h1 class="text-lg text-gray-500">February 11, 2021</h1>
+            <div id="tags" class="mt-2">
+                
+                    <a class="inline-block px-2 py-1 rounded-full mx-1 bg-blue-200 hover:bg-blue-300 hover:scale-110 transition duration-200 transform" href="http://noamzaks.tech/tags/area/">Area</a>
+                
+                    <a class="inline-block px-2 py-1 rounded-full mx-1 bg-blue-200 hover:bg-blue-300 hover:scale-110 transition duration-200 transform" href="http://noamzaks.tech/tags/min-max/">Min Max</a>
+                
+            </div>
+        </div>
+        <p>Given a group $ S $ of points $ (x,y) \in \mathbb R ^ 2 $ such that every three points in $ S $ form a triangle (aren&rsquo;t collinear) of area at most $ 1 $, show that there is some triangle with area at most 2 which bounds $ S $.</p>
+<h2 id="solution">Solution</h2>
+<p>The idea is to look at the three points which make the triangle with the largest area, and note the following observation:</p>
+<p><video controls src="/videos/triangle-areas/Example1.mp4" class="rounded-xl my-3 outline-none"></video>
+<video controls src="/videos/triangle-areas/Example2.mp4" class="rounded-xl my-3 outline-none"></video>
+<video controls src="/videos/triangle-areas/Example3.mp4" class="rounded-xl my-3 outline-none"></video></p>
+<p>You can generate similar animations with any number of points using the following</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> typing <span style="color:#f92672">import</span> Tuple
+<span style="color:#f92672">from</span> manim <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> itertools <span style="color:#f92672">import</span> combinations, permutations
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">mirror_line</span>(a, b, c) <span style="color:#f92672">-&gt;</span> Line:
+    direction <span style="color:#f92672">=</span> a <span style="color:#f92672">-</span> b
+    <span style="color:#66d9ef">return</span> Line(c <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">*</span> direction, c <span style="color:#f92672">-</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">*</span> direction)
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TriangleAreas</span>(Scene):
+    points <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">construct</span>(self):
+        <span style="color:#f92672">import</span> time
+
+        np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>seed(int(time<span style="color:#f92672">.</span>time()))
+
+        S <span style="color:#f92672">=</span> list(
+            map(
+                <span style="color:#66d9ef">lambda</span> point: np<span style="color:#f92672">.</span>append(point <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, [<span style="color:#ae81ff">0</span>]) <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span>,
+                np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(self<span style="color:#f92672">.</span>points, <span style="color:#ae81ff">2</span>),
+            )
+        )
+
+        max_triangle: Tuple[np<span style="color:#f92672">.</span>ndarray, np<span style="color:#f92672">.</span>ndarray, np<span style="color:#f92672">.</span>ndarray] <span style="color:#f92672">=</span> None
+        max_area <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>np<span style="color:#f92672">.</span>infty
+        <span style="color:#66d9ef">for</span> x, y, z <span style="color:#f92672">in</span> combinations(S, <span style="color:#ae81ff">3</span>):
+            area <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>norm(np<span style="color:#f92672">.</span>cross(z <span style="color:#f92672">-</span> x, z <span style="color:#f92672">-</span> y))
+            <span style="color:#66d9ef">if</span> area <span style="color:#f92672">&gt;</span> max_area:
+                max_area <span style="color:#f92672">=</span> area
+                max_triangle <span style="color:#f92672">=</span> (x, y, z)
+
+        a, b, c <span style="color:#f92672">=</span> max_triangle
+        small_lines <span style="color:#f92672">=</span> [Line(a, b), Line(a, c), Line(b, c)]
+        big_lines <span style="color:#f92672">=</span> [mirror_line(a, b, c), mirror_line(a, c, b), mirror_line(b, c, a)]
+
+        self<span style="color:#f92672">.</span>play(<span style="color:#f92672">*</span>[ShowCreation(Dot()<span style="color:#f92672">.</span>move_to(dot)) <span style="color:#66d9ef">for</span> dot <span style="color:#f92672">in</span> S])
+        self<span style="color:#f92672">.</span>play(<span style="color:#f92672">*</span>[ShowCreation(line) <span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> small_lines])
+
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(small_lines)):
+            self<span style="color:#f92672">.</span>play(Transform(small_lines[i]<span style="color:#f92672">.</span>copy(), big_lines[i]))
+</code></pre></div>
+
+        <div id="categories" class="text-center">
+            <a class="inline-block px-2 py-1 rounded-full mx-1 text-gray-700 hover:scale-110 transition duration-200 transform" href="/puzzles/">View all puzzles</a>
+            
+        </div>
+    </article>
+
+        </div></body>
+</html>
