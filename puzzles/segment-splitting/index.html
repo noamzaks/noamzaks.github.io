@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+
+<script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [
+                ["$", "$"],
+                ["\$", "\$"],
+            ],
+            displayMath: [
+                ["$$", "$$"],
+                ["\\[", "\\]"],
+            ],
+        },
+    };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.1.2/es5/tex-mml-chtml.min.js"
+    integrity="sha512-7rZgZU/u5XjLaO7dBpkcvZ2+ilGXbdIak0FXUgMoO+adNy7RUceort055Wn7LkZY3VLwEsSDpi8Ui+32N1vrfw=="
+    crossorigin="anonymous"></script>
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="/styles.css">
+<meta property="og:image" itemprop="image" content="http://noamzaks.tech/icon.png">
+<meta property="og:type" content="website">
+    <title>Noam Zaks | Segment Splitting</title>
+    <meta name="description" content="Given a set of pairwise-disjoint intervals (such that the intersection of every pair is empty ) in [0, 1], assuming the total length is greater than 1/2, show there are two points a,b in the union of the segments such that |a-b| = 1/10.">
+
+    </head>
+    <body><nav>
+    <div class="w-full bg-blue-200 py-3 mb-2">
+        <h1 class="text-center"><a href="/">Noam Zaks</a></h1>
+        <div id="categories" class="text-center mt-2">
+            <a class="inline-block px-2 py-1 rounded-xl mx-1 bg-blue-400 hover:bg-blue-600 hover:text-white hover:scale-125 transition duration-200 transform" href="/puzzles">Puzzles</a>
+        </div>
+    </div>
+</nav><div id="content" class="container mx-auto">
+    <article class="bg-gray-200 rounded-xl my-3 p-4 shadow-xl">
+        <div class="text-center">
+            <h1 class="text-3xl">
+                Segment Splitting
+            </h1>
+            <h1 class="text-lg text-gray-500">February 12, 2021</h1>
+            <div id="tags" class="mt-2">
+                
+            </div>
+        </div>
+        <p>Given a set of pairwise-disjoint intervals (such that the intersection of every pair is $ \emptyset $) in $ [0, 1] $, assuming the total length is greater than $ \frac 1 2 $, show there are two points $ a,b $ in the union of the segments such that $ |a-b| = \frac 1 {10} $.</p>
+<p>Here are a few examples</p>
+<p><video controls src="/videos/segment-splitting/Example1.mp4" class="rounded-xl my-3 outline-none"></video>
+<video controls src="/videos/segment-splitting/Example2.mp4" class="rounded-xl my-3 outline-none"></video>
+<video controls src="/videos/segment-splitting/Example3.mp4" class="rounded-xl my-3 outline-none"></video></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> manim <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SegmentSplittingExample</span>(Scene):
+    min_width <span style="color:#f92672">=</span> <span style="color:#f92672">.</span><span style="color:#ae81ff">5</span>
+    distance <span style="color:#f92672">=</span> <span style="color:#f92672">.</span><span style="color:#ae81ff">1</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">construct</span>(self):
+        <span style="color:#f92672">import</span> time
+        np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>seed(int(time<span style="color:#f92672">.</span>time()))
+
+        intervals <span style="color:#f92672">=</span> [(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>)]
+        total_interval_length <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+        <span style="color:#66d9ef">while</span> total_interval_length <span style="color:#f92672">&lt;=</span> self<span style="color:#f92672">.</span>min_width:
+            i <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>choice(range(len(intervals) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>))
+            a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>random()
+            b <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>random()
+            x,y <span style="color:#f92672">=</span> sorted([a,b])
+            
+            length <span style="color:#f92672">=</span> intervals[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>] <span style="color:#f92672">-</span> intervals[i][<span style="color:#ae81ff">1</span>]
+
+            intervals<span style="color:#f92672">.</span>insert(i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, (
+                intervals[i][<span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> length <span style="color:#f92672">*</span> x,
+                intervals[i][<span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> length <span style="color:#f92672">*</span> y,
+            ))
+            
+            total_interval_length <span style="color:#f92672">+=</span> intervals[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">1</span>] <span style="color:#f92672">-</span> intervals[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>]
+
+        lines <span style="color:#f92672">=</span> []
+        width <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>camera<span style="color:#f92672">.</span>frame_width
+        <span style="color:#66d9ef">for</span> interval <span style="color:#f92672">in</span> intervals:
+            lines<span style="color:#f92672">.</span>append(Line(self<span style="color:#f92672">.</span>expand_to_width(interval[<span style="color:#ae81ff">0</span>]), self<span style="color:#f92672">.</span>expand_to_width(interval[<span style="color:#ae81ff">1</span>])))
+        
+        self<span style="color:#f92672">.</span>play(<span style="color:#f92672">*</span>[ShowCreation(line) <span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> lines])
+
+        interval_i <span style="color:#f92672">=</span> None
+        reverse <span style="color:#f92672">=</span> False
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, len(intervals) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>):
+            shifted_interval <span style="color:#f92672">=</span> (intervals[i][<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>distance, intervals[i][<span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>distance)
+            <span style="color:#66d9ef">if</span> shifted_interval[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&gt;=</span> intervals[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>]:
+                interval_i <span style="color:#f92672">=</span> i
+                <span style="color:#66d9ef">break</span>
+            <span style="color:#66d9ef">elif</span> shifted_interval[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&lt;=</span> intervals[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">1</span>]:
+                interval_i <span style="color:#f92672">=</span> i
+                reverse <span style="color:#f92672">=</span> True
+                <span style="color:#66d9ef">break</span>
+        <span style="color:#66d9ef">if</span> interval_i <span style="color:#f92672">is</span> None:
+            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">Exception</span>(<span style="color:#e6db74">&#34;Couldn&#39;t find points with specified distance&#34;</span>)
+
+        position <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">if</span> reverse <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">0</span>
+        dot <span style="color:#f92672">=</span> Dot(color<span style="color:#f92672">=</span>BLUE)<span style="color:#f92672">.</span>move_to(self<span style="color:#f92672">.</span>expand_to_width(intervals[interval_i][position]))
+        shift <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>self<span style="color:#f92672">.</span>distance <span style="color:#66d9ef">if</span> reverse <span style="color:#66d9ef">else</span> self<span style="color:#f92672">.</span>distance
+        self<span style="color:#f92672">.</span>play(ShowCreation(dot))
+        self<span style="color:#f92672">.</span>play(
+            Transform(dot<span style="color:#f92672">.</span>copy(), Dot(color<span style="color:#f92672">=</span>BLUE)<span style="color:#f92672">.</span>move_to(self<span style="color:#f92672">.</span>expand_to_width(intervals[interval_i][position] <span style="color:#f92672">+</span> shift)))            
+        )
+        brace <span style="color:#f92672">=</span> Brace(Line(self<span style="color:#f92672">.</span>expand_to_width(intervals[interval_i][position]), self<span style="color:#f92672">.</span>expand_to_width(intervals[interval_i][position] <span style="color:#f92672">+</span> shift)))
+        self<span style="color:#f92672">.</span>play(
+            ShowCreation(brace),
+            ShowCreation(brace<span style="color:#f92672">.</span>get_tex(f<span style="color:#e6db74">&#34;{self.distance}&#34;</span>))
+        )
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">expand_to_width</span>(self, x: float) <span style="color:#f92672">-&gt;</span> np<span style="color:#f92672">.</span>ndarray:
+        <span style="color:#66d9ef">return</span> LEFT <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>camera<span style="color:#f92672">.</span>frame_width <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> x <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>camera<span style="color:#f92672">.</span>frame_width <span style="color:#f92672">*</span> RIGHT
+</code></pre></div><p>A few generalizations can be made - for example, there are 2 points such that $ |a-b| = \frac 1 {2n} $ for all $ n \in \mathbb N $. The above code also works for them! Here are a few demos.</p>
+<p><video controls src="/videos/segment-splitting/GeneralizationExample1.mp4" class="rounded-xl my-3 outline-none"></video>
+<video controls src="/videos/segment-splitting/GeneralizationExample2.mp4" class="rounded-xl my-3 outline-none"></video>
+<video controls src="/videos/segment-splitting/GeneralizationExample3.mp4" class="rounded-xl my-3 outline-none"></video></p>
+<h2 id="solution">Solution</h2>
+<p>Assume towards a contradiction that no such points $ a,b $ exist. Now, split the interval $ [0, 1] $ to 10 tenths, and observe the following: for each adjacent pair of tenths, the total length of the intervals is at most $ \frac 1 {10} $.
+Hence the total length in $ [0, 1] $ is at most $ 5 \times \frac 1 {10} = \frac 1 2 $, which gives a contradiction.</p>
+<p>This is true because if we look at the first interval, by the assumption we know we can move the segments right by $ \frac 1 {10} $ and still there won&rsquo;t be intersections - even with the segments in the second interval. Hence, the total length in the first and second interval is at most $ \frac 1 {10} $ because the segments can be placed inside $ [\frac 1 {10}, \frac 2 {10} ] $</p>
+<p>An animation of this will be added soon!</p>
+
+
+        <div id="categories" class="text-center">
+            <a class="inline-block px-2 py-1 rounded-full mx-1 text-gray-700 hover:scale-110 transition duration-200 transform" href="/puzzles/">View all puzzles</a>
+            
+        </div>
+    </article>
+
+        </div></body>
+</html>
