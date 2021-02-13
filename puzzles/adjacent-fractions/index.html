@@ -28,14 +28,17 @@
     <meta name="description" content="We look at all of the rational numbers in (0, 1] whose denominator is smaller than some natural number n. Prove that for any two adjacent numbers a/b, c/d the following holds: bc - ad = 1 $.">
 
     </head>
-    <body><nav>
-    <div class="w-full bg-blue-200 py-3 mb-2">
+    <body class="flex flex-col h-screen">
+        <div class="flex-none w-full"><nav>
+    <div class="w-full bg-blue-200 py-3">
         <h1 class="text-center"><a href="/">Noam Zaks</a></h1>
         <div id="categories" class="text-center mt-2">
             <a class="inline-block px-2 py-1 rounded-xl mx-1 bg-blue-400 hover:bg-blue-600 hover:text-white hover:scale-125 transition duration-200 transform" href="/puzzles">Puzzles</a>
         </div>
     </div>
-</nav><div id="content" class="container mx-auto px-5 md:px-0">
+</nav>
+</div>
+        <div id="content" class="container px-5 mx-auto overflow-y-auto md:px-0 w-100 pt-2">
     <article class="bg-gray-200 rounded-xl my-3 p-4 shadow-xl">
         <div class="text-center">
             <h1 class="text-3xl">
@@ -152,7 +155,7 @@
 Assume towards a contradiction that there is a point, then the slope of the line between said point and the origin would be between $ \frac {p_i} {q_i} $ and $ \frac {p_{i+1}} {q_{i+1}} $.
 This point&rsquo;s $ x $ value must be between $ p_i $ and $ p_{i+1} $, but by definition there is no fraction with a denominator this small between them!</p>
 <video controls src="/videos/adjacent-fractions/Solution.mp4" class="rounded-xl my-3 outline-none"></video>
-<p>Hence the area is a half, but by simple algebraic calculations it is also equal to $ \frac 1 2 p_{i+1} q_i - p_i q_{i+1} $.&quot;</p>
+<p>Hence the area is a half, but by simple algebraic calculations it is also equal to $ \frac 1 2 p_{i+1} q_i - p_i q_{i+1} $.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> manim <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
 <span style="color:#f92672">from</span> fractions <span style="color:#f92672">import</span> Fraction
 
