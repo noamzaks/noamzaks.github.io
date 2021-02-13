@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>measure on Noam Zaks</title>
+    <link>http://noamzaks.tech/tags/measure/</link>
+    <description>Recent content in measure on Noam Zaks</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Feb 2021 13:41:10 +0200</lastBuildDate><atom:link href="http://noamzaks.tech/tags/measure/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Segment Splitting</title>
+      <link>http://noamzaks.tech/puzzles/segment-splitting/</link>
+      <pubDate>Fri, 12 Feb 2021 13:41:10 +0200</pubDate>
+      
+      <guid>http://noamzaks.tech/puzzles/segment-splitting/</guid>
+      <description>Given a set of pairwise-disjoint intervals (such that the intersection of every pair is $ \emptyset $) in $ [0, 1] $, assuming the total length is greater than $ \frac 1 2 $, show there are two points $ a,b $ in the union of the segments such that $ |a-b| = \frac 1 {10} $.
+Here are a few examples
+  
+from manim import * class SegmentSplittingExample(Scene): min_width = .</description>
+    </item>
+    
+  </channel>
+</rss>

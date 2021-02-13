@@ -18,5 +18,17 @@ Here&amp;rsquo;s an example for $ n = 4 $:
  Here&amp;rsquo;s another (with the same code) for $ n = 7 $:</description>
     </item>
     
+    <item>
+      <title>Segment Splitting</title>
+      <link>http://noamzaks.tech/puzzles/segment-splitting/</link>
+      <pubDate>Fri, 12 Feb 2021 13:41:10 +0200</pubDate>
+      
+      <guid>http://noamzaks.tech/puzzles/segment-splitting/</guid>
+      <description>Given a set of pairwise-disjoint intervals (such that the intersection of every pair is $ \emptyset $) in $ [0, 1] $, assuming the total length is greater than $ \frac 1 2 $, show there are two points $ a,b $ in the union of the segments such that $ |a-b| = \frac 1 {10} $.
+Here are a few examples
+  
+from manim import * class SegmentSplittingExample(Scene): min_width = .</description>
+    </item>
+    
   </channel>
 </rss>

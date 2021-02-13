@@ -18,5 +18,15 @@ Here&amp;rsquo;s an example for $ n = 4 $:
  Here&amp;rsquo;s another (with the same code) for $ n = 7 $:</description>
     </item>
     
+    <item>
+      <title>Grasshopping</title>
+      <link>http://noamzaks.tech/puzzles/grasshopping/</link>
+      <pubDate>Tue, 09 Feb 2021 13:27:04 +0200</pubDate>
+      
+      <guid>http://noamzaks.tech/puzzles/grasshopping/</guid>
+      <description>A grasshopper sits in a point $ M \in \mathbb R ^ 2 $, outside of the square $ [0, 1] ^ 2 $. Each time, they face towards the origin and choose the rightmost corner of the square they are able to see (from their perspective). Then they go to the symmetric point with regard to it.
+That&amp;rsquo;s quite a difficult explanation of their moves, so here&amp;rsquo;s one without words - an example of the first 50 hops when the grasshopper starts at $ (3, 2) $:</description>
+    </item>
+    
   </channel>
 </rss>
