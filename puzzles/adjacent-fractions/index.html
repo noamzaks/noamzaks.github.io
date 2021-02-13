@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+
+<script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [
+                ["$", "$"],
+                ["\$", "\$"],
+            ],
+            displayMath: [
+                ["$$", "$$"],
+                ["\\[", "\\]"],
+            ],
+        },
+    };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.1.2/es5/tex-mml-chtml.min.js"
+    integrity="sha512-7rZgZU/u5XjLaO7dBpkcvZ2+ilGXbdIak0FXUgMoO+adNy7RUceort055Wn7LkZY3VLwEsSDpi8Ui+32N1vrfw=="
+    crossorigin="anonymous"></script>
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="/styles.css">
+<meta property="og:image" itemprop="image" content="http://noamzaks.tech/icon.png">
+<meta property="og:type" content="website">
+    <title>Noam Zaks | Adjacent Fractions</title>
+    <meta name="description" content="We look at all of the rational numbers in (0, 1] whose denominator is smaller than some natural number n. Prove that for any two adjacent numbers a/b, c/d the following holds: bc - ad = 1 $.">
+
+    </head>
+    <body><nav>
+    <div class="w-full bg-blue-200 py-3 mb-2">
+        <h1 class="text-center"><a href="/">Noam Zaks</a></h1>
+        <div id="categories" class="text-center mt-2">
+            <a class="inline-block px-2 py-1 rounded-xl mx-1 bg-blue-400 hover:bg-blue-600 hover:text-white hover:scale-125 transition duration-200 transform" href="/puzzles">Puzzles</a>
+        </div>
+    </div>
+</nav><div id="content" class="container mx-auto px-5 md:px-0">
+    <article class="bg-gray-200 rounded-xl my-3 p-4 shadow-xl">
+        <div class="text-center">
+            <h1 class="text-3xl">
+                Adjacent Fractions
+            </h1>
+            <h1 class="text-lg text-gray-500">February 13, 2021</h1>
+            <div id="tags" class="mt-2">
+                
+                    <a class="inline-block px-2 py-1 rounded-full mx-1 bg-blue-200 hover:bg-blue-300 hover:scale-110 transition duration-200 transform" href="http://noamzaks.tech/tags/integer-grid/">Integer Grid</a>
+                
+                    <a class="inline-block px-2 py-1 rounded-full mx-1 bg-blue-200 hover:bg-blue-300 hover:scale-110 transition duration-200 transform" href="http://noamzaks.tech/tags/fractions/">Fractions</a>
+                
+                    <a class="inline-block px-2 py-1 rounded-full mx-1 bg-blue-200 hover:bg-blue-300 hover:scale-110 transition duration-200 transform" href="http://noamzaks.tech/tags/number-theory/">Number Theory</a>
+                
+            </div>
+        </div>
+        <p>We look at all of the rational numbers in $ (0, 1] $ whose denominator is smaller than some $ n \in \mathbb N $. Prove that for any two adjacent numbers $ \frac {p_i} {q_i}, \frac {p_{i+1}} {q_{i+1}} $ the following holds: $ p_{i+1} q_i - p_i q_{i+1} = 1 $.</p>
+<p>Here&rsquo;s an example for $ n = 4 $:</p>
+<video controls src="/videos/adjacent-fractions/FourExample.mp4" class="rounded-xl my-3 outline-none"></video>
+<p>Here&rsquo;s another (with the same code) for $ n = 7 $:</p>
+<video controls src="/videos/adjacent-fractions/SevenExample.mp4" class="rounded-xl my-3 outline-none"></video>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> manim <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> fractions <span style="color:#f92672">import</span> Fraction
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AdjacentFractionsExample</span>(Scene):
+    n <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">construct</span>(self):
+        fractions <span style="color:#f92672">=</span> [Fraction(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)]
+        <span style="color:#66d9ef">for</span> denominator <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
+            <span style="color:#66d9ef">for</span> numerator <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, denominator):
+                fraction <span style="color:#f92672">=</span> Fraction(numerator, denominator)
+                <span style="color:#66d9ef">if</span> fraction <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> fractions:
+                    fractions<span style="color:#f92672">.</span>append(Fraction(numerator, denominator))
+        fractions <span style="color:#f92672">=</span> sorted(fractions)
+        fraction_mobjects <span style="color:#f92672">=</span> [
+            MathTex(
+                <span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;\frac {&#34;</span>
+                <span style="color:#f92672">+</span> str(fraction<span style="color:#f92672">.</span>numerator)
+                <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;} {&#34;</span>
+                <span style="color:#f92672">+</span> str(fraction<span style="color:#f92672">.</span>denominator)
+                <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;}&#34;</span>
+            )<span style="color:#f92672">.</span>move_to(self<span style="color:#f92672">.</span>expand_to_width(float(fraction)))
+            <span style="color:#66d9ef">for</span> fraction <span style="color:#f92672">in</span> fractions
+        ]
+        self<span style="color:#f92672">.</span>play(
+            <span style="color:#f92672">*</span>[ShowCreation(fraction_mobject) <span style="color:#66d9ef">for</span> fraction_mobject <span style="color:#f92672">in</span> fraction_mobjects]
+        )
+
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(fractions) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>):
+            first_multiple <span style="color:#f92672">=</span> (
+                MathTex(str(fractions[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>numerator <span style="color:#f92672">*</span> fractions[i]<span style="color:#f92672">.</span>denominator))
+                <span style="color:#f92672">.</span>align_to(fraction_mobjects[i], LEFT)
+                <span style="color:#f92672">.</span>shift(<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> DOWN)
+            )
+            minus <span style="color:#f92672">=</span> MathTex(<span style="color:#e6db74">&#34;-&#34;</span>)<span style="color:#f92672">.</span>next_to(first_multiple, RIGHT)
+            second_multiple <span style="color:#f92672">=</span> MathTex(
+                str(fractions[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>denominator <span style="color:#f92672">*</span> fractions[i]<span style="color:#f92672">.</span>numerator)
+            )<span style="color:#f92672">.</span>next_to(minus, RIGHT)
+            self<span style="color:#f92672">.</span>play(
+                ReplacementTransform(
+                    VGroup(
+                        MathTex(str(fractions[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>numerator))
+                        <span style="color:#f92672">.</span>align_to(fraction_mobjects[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>], UP)
+                        <span style="color:#f92672">.</span>align_to(fraction_mobjects[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>], LEFT),
+                        MathTex(str(fractions[i]<span style="color:#f92672">.</span>denominator))
+                        <span style="color:#f92672">.</span>align_to(fraction_mobjects[i], DOWN)
+                        <span style="color:#f92672">.</span>align_to(fraction_mobjects[i], LEFT),
+                    ),
+                    first_multiple,
+                ),
+            )
+            self<span style="color:#f92672">.</span>play(
+                FadeIn(minus),
+                ReplacementTransform(
+                    VGroup(
+                        MathTex(str(fractions[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>denominator))
+                        <span style="color:#f92672">.</span>align_to(fraction_mobjects[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>], DOWN)
+                        <span style="color:#f92672">.</span>align_to(fraction_mobjects[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>], LEFT),
+                        MathTex(str(fractions[i]<span style="color:#f92672">.</span>numerator))
+                        <span style="color:#f92672">.</span>align_to(fraction_mobjects[i], UP)
+                        <span style="color:#f92672">.</span>align_to(fraction_mobjects[i], LEFT),
+                    ),
+                    second_multiple,
+                ),
+            )
+            self<span style="color:#f92672">.</span>play(
+                FadeOut(first_multiple),
+                FadeOut(minus),
+                Transform(
+                    second_multiple,
+                    MathTex(
+                        str(
+                            fractions[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>numerator <span style="color:#f92672">*</span> fractions[i]<span style="color:#f92672">.</span>denominator
+                            <span style="color:#f92672">-</span> fractions[i]<span style="color:#f92672">.</span>numerator <span style="color:#f92672">*</span> fractions[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>denominator
+                        )
+                    )
+                    <span style="color:#f92672">.</span>move_to(first_multiple)
+                    <span style="color:#f92672">.</span>align_to(fraction_mobjects[i], LEFT),
+                ),
+            )
+        halmos <span style="color:#f92672">=</span> Square(fill_opacity<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, side_length<span style="color:#f92672">=</span><span style="color:#ae81ff">0.2</span>)
+        self<span style="color:#f92672">.</span>play(ReplacementTransform(VGroup(<span style="color:#f92672">*</span>self<span style="color:#f92672">.</span>mobjects), halmos))
+        self<span style="color:#f92672">.</span>play(halmos<span style="color:#f92672">.</span>animate<span style="color:#f92672">.</span>scale(<span style="color:#ae81ff">75</span>), run_time<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
+        self<span style="color:#f92672">.</span>play(FadeOut(halmos))
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">expand_to_width</span>(self, x: float) <span style="color:#f92672">-&gt;</span> np<span style="color:#f92672">.</span>ndarray:
+        width <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>camera<span style="color:#f92672">.</span>frame_width <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>
+        <span style="color:#66d9ef">return</span> width <span style="color:#f92672">*</span> LEFT <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> width <span style="color:#f92672">*</span> x <span style="color:#f92672">*</span> RIGHT
+</code></pre></div><h2 id="solution">Solution</h2>
+<p>The solution is based on a fact that any triangle in the integer number plane which doesn&rsquo;t contain any integer points inside, has an area of $ \frac 1 2 $.</p>
+<p>If we look at the triangle given by the origin and the integer points $ (p_i, q_i ) $ and $ (p_{i+1}, q_{i+1}) $, we can show that it indeed doesn&rsquo;t contain any integer point.
+Assume towards a contradiction that there is a point, then the slope of the line between said point and the origin would be between $ \frac {p_i} {q_i} $ and $ \frac {p_{i+1}} {q_{i+1}} $.
+This point&rsquo;s $ x $ value must be between $ p_i $ and $ p_{i+1} $, but by definition there is no fraction with a denominator this small between them!</p>
+<video controls src="/videos/adjacent-fractions/Solution.mp4" class="rounded-xl my-3 outline-none"></video>
+<p>Hence the area is a half, but by simple algebraic calculations it is also equal to $ \frac 1 2 p_{i+1} q_i - p_i q_{i+1} $.&quot;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> manim <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> fractions <span style="color:#f92672">import</span> Fraction
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AdjacentFractionsSolution</span>(Scene):
+    a <span style="color:#f92672">=</span> Fraction(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>)
+    b <span style="color:#f92672">=</span> Fraction(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">construct</span>(self):
+        plane <span style="color:#f92672">=</span> NumberPlane()
+        self<span style="color:#f92672">.</span>play(ShowCreation(plane))
+        a_point <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>a<span style="color:#f92672">.</span>denominator <span style="color:#f92672">*</span> RIGHT <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>a<span style="color:#f92672">.</span>numerator <span style="color:#f92672">*</span> UP
+        b_point <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>b<span style="color:#f92672">.</span>denominator <span style="color:#f92672">*</span> RIGHT <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>b<span style="color:#f92672">.</span>numerator <span style="color:#f92672">*</span> UP
+
+        self<span style="color:#f92672">.</span>play(
+            ShowCreation(Dot()<span style="color:#f92672">.</span>move_to(a_point)),
+            ShowCreation(Line(ORIGIN, a_point)),
+        )
+
+        self<span style="color:#f92672">.</span>play(
+            ShowCreation(Dot()<span style="color:#f92672">.</span>move_to(b_point)),
+            ShowCreation(Line(ORIGIN, b_point)),
+        )
+
+        triangle <span style="color:#f92672">=</span> Polygon(ORIGIN, a_point, b_point, color<span style="color:#f92672">=</span>WHITE, fill_opacity<span style="color:#f92672">=</span><span style="color:#ae81ff">0.6</span>)
+        self<span style="color:#f92672">.</span>play(FadeOut(plane), ShowCreation(triangle))
+
+        self<span style="color:#f92672">.</span>play(
+            Transform(
+                triangle,
+                MathTex(f<span style="color:#e6db74">&#34;S = ad - bc = &#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;\frac 1 2&#34;</span>)<span style="color:#f92672">.</span>shift(<span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> RIGHT <span style="color:#f92672">+</span> DOWN),
+            )
+        )
+</code></pre></div>
+
+        <div id="categories" class="text-center">
+            <a class="inline-block px-2 py-1 rounded-full mx-1 text-gray-700 hover:scale-110 transition duration-200 transform" href="/puzzles/">View all puzzles</a>
+            
+        </div>
+    </article>
+
+        </div></body>
+</html>

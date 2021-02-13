@@ -3,13 +3,38 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://noamzaks.tech/puzzles/adjacent-fractions/</loc>
+    <lastmod>2021-02-13T11:49:57+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://noamzaks.tech/tags/fractions/</loc>
+    <lastmod>2021-02-13T11:49:57+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://noamzaks.tech/tags/integer-grid/</loc>
+    <lastmod>2021-02-13T11:49:57+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://noamzaks.tech/</loc>
-    <lastmod>2021-02-12T13:41:10+02:00</lastmod>
+    <lastmod>2021-02-13T11:49:57+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://noamzaks.tech/tags/number-theory/</loc>
+    <lastmod>2021-02-13T11:49:57+02:00</lastmod>
   </url>
   
   <url>
     <loc>http://noamzaks.tech/puzzles/</loc>
-    <lastmod>2021-02-12T13:41:10+02:00</lastmod>
+    <lastmod>2021-02-13T11:49:57+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://noamzaks.tech/tags/</loc>
+    <lastmod>2021-02-13T11:49:57+02:00</lastmod>
   </url>
   
   <url>
@@ -24,11 +49,6 @@
   
   <url>
     <loc>http://noamzaks.tech/tags/min-max/</loc>
-    <lastmod>2021-02-11T16:24:22+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://noamzaks.tech/tags/</loc>
     <lastmod>2021-02-11T16:24:22+02:00</lastmod>
   </url>
   

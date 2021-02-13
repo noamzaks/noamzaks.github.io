@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>number-theory on Noam Zaks</title>
+    <link>http://noamzaks.tech/tags/number-theory/</link>
+    <description>Recent content in number-theory on Noam Zaks</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 13 Feb 2021 11:49:57 +0200</lastBuildDate><atom:link href="http://noamzaks.tech/tags/number-theory/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Adjacent Fractions</title>
+      <link>http://noamzaks.tech/puzzles/adjacent-fractions/</link>
+      <pubDate>Sat, 13 Feb 2021 11:49:57 +0200</pubDate>
+      
+      <guid>http://noamzaks.tech/puzzles/adjacent-fractions/</guid>
+      <description>We look at all of the rational numbers in $ (0, 1] $ whose denominator is smaller than some $ n \in \mathbb N $. Prove that for any two adjacent numbers $ \frac {p_i} {q_i}, \frac {p_{i+1}} {q_{i+1}} $ the following holds: $ p_{i+1} q_i - p_i q_{i+1} = 1 $.
+Here&amp;rsquo;s an example for $ n = 4 $:
+ Here&amp;rsquo;s another (with the same code) for $ n = 7 $:</description>
+    </item>
+    
+  </channel>
+</rss>
