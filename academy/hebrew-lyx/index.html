@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-SCKKX6R4">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Setup guide for LyX with Hebrew (using TeXLive and pdflatex).">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="/styles.css">
+    <meta name="apple-mobile-web-app-status-bar" content="#3a70d9">
+    <meta name="theme-color" content="#3a70d9">
+
+    <meta name="generator" content="Astro v2.10.15">
+
+    <title>Hebrew LyX | Noam Zaks</title>
+  <link rel="stylesheet" href="/assets/404.0f5df7c9.css" /></head>
+  <body class="astro-SCKKX6R4">
+    <header class="header astro-3EF6KSR2">
+  <a href="/" class="astro-3EF6KSR2">
+    <img src="/favicon.ico" height="60px" class="astro-3EF6KSR2">
+  </a>
+  <h3 class="astro-3EF6KSR2">Noam Zaks</h3>
+  <div class="fill astro-3EF6KSR2"></div>
+  <div class="end astro-3EF6KSR2">
+    <a href="https://github.com/noamzaks" class="astro-3EF6KSR2">
+      <i class="fa-brands fa-github astro-3EF6KSR2"></i>
+    </a>
+  </div>
+</header>
+    <main class="astro-SCKKX6R4">
+      <div class="container astro-SCKKX6R4">
+      <h1 id="lyx-hebrew-guide">LyX Hebrew Guide</h1>
+<ul>
+<li>Install <a href="https://www.tug.org/texlive/acquire-netinstall.html">TeXLive</a> using either <code>install-tl-windows.exe</code> for Windows or <code>install-tl-unx.tar.gz</code> for Linux/macOS. <strong>Note:</strong> I suggest you press <code>Advanced</code> and then change the scheme from <code>full scheme (everything)</code> to <code>basic scheme (plain and latex)</code>, to download only the necessary LaTeX packages (you will be able to download additional needed ones later, and you may also choose to install the medium scheme).</li>
+<li>Install the <code>babel-hebrew</code>, <code>hebrew-fonts</code> and <code>culmus</code> packages by running <code>tlmgr install babel-hebrew hebrew-fonts culmus</code> in an administrator command-line. <strong>Note:</strong> If you try to render a LyX document and you see an error like <code>LaTeX Error: File `tikz.sty` not found.</code> you will need to install an additional package. Either search Google for the relevant TeXLive package, or run the command <code>tlmgr search --global --file tikz.sty</code> and pick the package containing the exact file you need.</li>
+<li>Install LyX by running the installer for your system which can be downloaded from <a href="https://www.lyx.org/Download">here</a>.
+For Windows, install the appropriate <code>.exe</code> file and for macOS install the <code>.dmg</code> file.</li>
+<li>Update your global (non document-specific) preferences for hebrew by going into <code>Tools->Preferences</code> in Windows and Linux or <code>LyX->Preferences</code> on macOS.
+<ul>
+<li>Change <code>Editing->Keyboard/Mouse</code> to enable <code>Use keyboard map</code> and pick <code>null</code> for Primary and <code>hebrew</code> for Secondary.</li>
+<li>Add a shortcut in <code>Editing->Shortcuts</code> by pressing <code>New</code>, enter <code>language hebrew</code> for the <code>Function</code> field and then enter your preferred shortcut in shortcut by clicking on it, pressing the keys and then click OK.
+I suggest <code>Shift+Space</code> for Windows/Linux and <code>Control+Space</code> for macOS.</li>
+<li>In <code>File Handling->File Formats</code> pick <code>PDF (pdflatex)</code> for the default output format with TeX fonts.</li>
+</ul>
+</li>
+<li>Update your document preferences for hebrew (and defaults) by going into <code>Document->Settings</code>.
+<ul>
+<li>In <code>Document Class</code> pick <code>Hebrew Article</code>.</li>
+<li>In <code>Language</code> pick <code>Hebrew</code>.</li>
+<li>In <code>LaTeX Preamble</code> add the line <code>\usepackage[use-david]{culmus}</code>.</li>
+<li>In <code>Float Placement</code> I suggest I suggest using <code>Here definitely</code>.</li>
+<li>In <code>Page Margins</code> I suggest reducing the defaults to 1.5 for top and bottom and 1 for inner and outer.</li>
+<li>Click <code>Save as Document Defaults</code> so all of the documents you create will use the above settings.</li>
+</ul>
+</li>
+</ul>
+    </div>
+    </main>
+    <footer class="footer astro-SZ7XMLTE">
+  <p class="astro-SZ7XMLTE">&copy; Noam Zaks 2023. All rights reserved.</p>
+</footer>
+  </body></html>
